@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder,FormGroup, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-registrar',
@@ -6,31 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
+  registrarForm: FormGroup;
+  submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+    this.registrarForm = this.formBuilder.group(
+      {
+        nombre:['', Validators.required],
+        correo:['', [Validators.required,Validators.email]],
+        contrasena:['', [Validators.required,Validators.minLength(6)]],
+        confirmContrasena:['', Validators.required],
+      });
+   }
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group(
-    {
-      nombre:['',Validators.required],
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(6)]],
-      confirmPassword:['',Validators.required],
-    },{
-      validators:this.MustMatch('password','confirmPassword')
-    }
-    );
+  
+
+  ngOnInit() {}
+  get f() {return this.registrarForm.console;}
+
+
+  registrar (){
+    console.log(this.registrarForm.controls);
+
   }
 
-  registrar(form){
-    let inputs= form.form.value;
-    if(inputs.password != inputs.confirmPassword){
-      console.log('El password y la confirmcion')
-    }
-  }
-
-  MustMatch(controlName:string, matchingControlName:string){
-    return true;
-  }
+  
 
 }
