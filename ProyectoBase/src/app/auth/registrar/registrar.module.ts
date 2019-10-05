@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule} from '@angular/forms'; 
 
 import { RegistrarPage } from './registrar.page';
 import {HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
