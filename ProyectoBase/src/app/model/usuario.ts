@@ -1,4 +1,4 @@
-import { HttpService } from '../service/http-service.service';
+import { HttpService } from '../service/http-service';
 
 export class Usuario {
     public static endPoint = '/usuario';
