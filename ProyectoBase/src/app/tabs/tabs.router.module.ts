@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { CuentaPageModule } from '../cuenta/cuenta.module';
 
 const routes: Routes = [
   {
@@ -8,46 +9,42 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'cuenta',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../cuenta/cuenta.module').then(m => m.CuentaPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'movimientos',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../movimientos/movimientos.module').then(m => m.MovimientosPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'resumen',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../resumen-chart/resumen-chart.module').then(m => m.ResumenChartPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
+        redirectTo: 'tabs/cuenta',
+        pathMatch: 'full',
+        component: CuentaPageModule
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
   }
 ];
 
@@ -55,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

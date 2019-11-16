@@ -6,13 +6,20 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    TabsPageRoutingModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: TabsPage
+      }
+    ])
   ],
   declarations: [TabsPage]
 })

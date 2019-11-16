@@ -6,13 +6,17 @@ import { LoginPage } from './auth/login/login.page';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./auth/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'registro', component: RegistrarPage},
+  { path: 'registro', component: RegistrarPage },
   { path: 'registrar', component: RegistrarPage },
-  { path: 'login', component: LoginPage},
-  { path: 'home', loadChildren:'./home/home.module#HomePageModule'},
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' }
+  { path: 'login', component: LoginPage },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'cuenta', loadChildren: './cuenta/cuenta.module#CuentaPageModule' },
+  { path: 'movimientos', loadChildren: './movimientos/movimientos.module#MovimientosPageModule' },
+  { path: 'resumen', loadChildren: './resumen-chart/resumen-chart.module#ResumenChartPageModule' },
+
+
 
 ];
 @NgModule({
@@ -21,4 +25,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
